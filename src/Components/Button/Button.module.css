@@ -9,8 +9,8 @@
 
 .button:hover{
     cursor: pointer;
-    border: 1px solid #007FFF;
     color: #007FFF;
-    background-color: white;
+    border: 1px solid #007FFF;
+    background-color:white;
 }
 
