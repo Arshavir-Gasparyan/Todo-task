@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import styles from "./LogIn.module.css";
 
 export default function LogIn() {
+  const history = useHistory();
   const [loginInfo, setLoginInfo] = useState("");
   const [passwordInfo, setPasswordInfo] = useState("");
   const [isValid, setValid] = useState({
@@ -28,10 +30,11 @@ export default function LogIn() {
     );
     if (currentUser.length) {
       setValid({
-        isValidLoginInfo: true,
+        isValidUserInfo: true,
         isValidPasswordInfo: true,
       });
       localStorage.setItem("user", JSON.stringify(currentUser));
+      history.push("/todo");
     } else {
       const isValidUserInfo = userInfo.find(
         (user) => user.username === loginInfo
@@ -69,6 +72,7 @@ export default function LogIn() {
             Please enter valid password
           </p>
         )}
+
         <Button />
       </form>
     </div>
