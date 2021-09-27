@@ -1,10 +1,12 @@
 import Button from "../Button/Button";
 import styles from "./Task.module.css";
-export default function Task({ task, onClick }) {
+export default function Task({ isComplete, task, onClick, onChange }) {
   return (
     <div className={styles.task}>
-      <p>y</p>
-      <p>{task.text}</p>
+      <label className={isComplete ? styles.completed : styles.label}>
+        <input onChange={onChange} type="checkbox"></input>
+        {task}
+      </label>
       <Button text="X" onClick={onClick} />
     </div>
   );

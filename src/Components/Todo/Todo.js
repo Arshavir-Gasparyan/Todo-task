@@ -6,7 +6,7 @@ import styles from "./Todo.module.css";
 
 export default function Todo() {
   const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState({});
+  const [task, setTask] = useState("");
 
   //   const generateId = () => {
   //     const id = Math.floor(Math.random() * 100);
@@ -14,22 +14,22 @@ export default function Todo() {
   //   };
 
   const handleTask = (e) => {
-    setTask({
-      text: e.target.value,
-      //   id: generateId(),
-    });
+    setTask(e.target.value);
   };
 
   const handleClick = () => {
-    setTasks([
-      ...tasks,
-      {
-        title: task,
-        id: Date.now(),
-        isComplete: false,
-      },
-    ]);
-    console.log(task.id);
+    if (task) {
+      setTasks([
+        ...tasks,
+        {
+          title: task,
+          id: Date.now(),
+          isComplete: false,
+        },
+      ]);
+    }
+    setTask("");
+    // console.log(task.id);
   };
 
   const handleDelete = (id) => {
@@ -37,7 +37,15 @@ export default function Todo() {
     const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
   };
-
+  const handleComplete = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, isComplete: !task.isComplete } : task
+      )
+    );
+  };
+  //   console.log(tasks);
+  const doneCount = tasks.filter((task) => task.isComplete).length;
   return (
     <div className={styles.todo}>
       <h2>THINGS TO DO</h2>
@@ -45,13 +53,18 @@ export default function Todo() {
       <div>
         {tasks.map((task) => (
           <div key={task.id}>
-            <Task task={task.title} onClick={() => handleDelete(task.id)} />
+            <Task
+              isComplete={task.isComplete}
+              task={task.title}
+              onClick={() => handleDelete(task.id)}
+              onChange={() => handleComplete(task.id)}
+            />
           </div>
         ))}
       </div>
       <div>
-        <h2>Done</h2>
-        <Input onChange={handleTask} value={task.text} />
+        <h2>Done {doneCount}</h2>
+        <Input onChange={handleTask} value={task} />
         <Button text="Add" onClick={handleClick} />
       </div>
     </div>

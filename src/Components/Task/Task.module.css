@@ -2,3 +2,15 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.label{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.completed{
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: line-through;
+
+}
