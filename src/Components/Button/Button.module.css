@@ -10,7 +10,7 @@
 .button:hover{
     cursor: pointer;
     color: #007FFF;
-    border: 1px solid #007FFF;
+    /* border: 1px solid #007FFF; */
     background-color:white;
 }
 
