@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { setStorage } from "../../helpers/localStorage";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import styles from "./LogIn.module.css";
@@ -13,8 +14,16 @@ export default function LogIn() {
     isValidPasswordInfo: true,
   });
   const userInfo = [
-    { user: "John Smith", username: "user1", password: "password1" },
-    { user: "Robert Johnson", username: "user2", password: "password2" },
+    {
+      user: "John Smith",
+      username: "user1",
+      password: "password1",
+    },
+    {
+      user: "Robert Johnson",
+      username: "user2",
+      password: "password2",
+    },
   ];
   const handleUsername = (event) => {
     setLoginInfo(event.target.value);
@@ -33,7 +42,8 @@ export default function LogIn() {
         isValidUserInfo: true,
         isValidPasswordInfo: true,
       });
-      localStorage.setItem("user", JSON.stringify(currentUser));
+      setStorage("user", currentUser);
+      // localStorage.setItem("user", JSON.stringify(currentUser));
       history.push("/todo");
     } else {
       const isValidUserInfo = userInfo.find(

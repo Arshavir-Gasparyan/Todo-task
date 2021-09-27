@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
+import { getStorage, setStorage } from "../../helpers/localStorage";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Task from "../Task/Task";
 import styles from "./Todo.module.css";
 
 export default function Todo() {
-  const [tasks, setTasks] = useState([]);
+  const currUser = getStorage("user")[0].user;
+  const initialTasks = getStorage(currUser) ? getStorage(currUser) : [];
+  const [tasks, setTasks] = useState(initialTasks);
   const [task, setTask] = useState("");
 
-  //   const generateId = () => {
-  //     const id = Math.floor(Math.random() * 100);
-  //     return id;
-  //   };
+  useEffect(() => {
+    setStorage(currUser, tasks);
+  }, [tasks]);
 
   const handleTask = (e) => {
     setTask(e.target.value);
@@ -29,7 +31,6 @@ export default function Todo() {
       ]);
     }
     setTask("");
-    // console.log(task.id);
   };
 
   const handleDelete = (id) => {
