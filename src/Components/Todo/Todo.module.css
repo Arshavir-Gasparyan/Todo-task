@@ -3,3 +3,12 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputBan{
+    width: 150px;
+}

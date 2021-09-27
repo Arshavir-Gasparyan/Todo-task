@@ -15,6 +15,7 @@
 .input[type="checkbox"] {
     zoom:2;
 }
+
 .completed{
     display: flex;
     justify-content: space-evenly;
@@ -23,6 +24,16 @@
     text-decoration: line-through;
 }
 
-.task button{
-    background-color: grey;
+.button{
+    padding: 9px;
+    cursor: pointer;
+    font-size: 17px;
+    color: white;
+    border: inherit;
+    background-color:#007FFF ;
+    border-radius: 3px;
+}
+
+.button:hover{
+    background-color: red;
 }

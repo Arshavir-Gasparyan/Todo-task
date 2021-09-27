@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+
 import { getStorage, setStorage } from "../../helpers/localStorage";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Task from "../Task/Task";
+
 import styles from "./Todo.module.css";
 
 export default function Todo() {
@@ -45,7 +47,7 @@ export default function Todo() {
       )
     );
   };
-  //   console.log(tasks);
+
   const doneCount = tasks.filter((task) => task.isComplete).length;
   return (
     <div className={styles.todo}>
@@ -64,10 +66,12 @@ export default function Todo() {
         ))}
       </div>
       <hr />
-      <div>
-        <h2>Done {doneCount}</h2>
-        <Input onChange={handleTask} value={task} />
+      <h2>Done {doneCount}</h2>
+
+      <div className={styles.main}>
+        <Input style={{ width: "200px" }} onChange={handleTask} value={task} />
         <Button text="Add" onClick={handleClick} />
+        <Button text="Logout" />
       </div>
     </div>
   );

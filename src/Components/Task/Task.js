@@ -1,5 +1,5 @@
-import Button from "../Button/Button";
 import styles from "./Task.module.css";
+
 export default function Task({ isComplete, task, onClick, onChange }) {
   return (
     <div className={styles.task}>
@@ -12,7 +12,9 @@ export default function Task({ isComplete, task, onClick, onChange }) {
         ></input>
         {task}
       </label>
-      <Button text="X" onClick={onClick} />
+      <button className={styles.button} onClick={onClick}>
+        X
+      </button>
     </div>
   );
 }

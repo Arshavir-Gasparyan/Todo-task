@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import { setStorage } from "../../helpers/localStorage";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+
 import styles from "./LogIn.module.css";
 
 export default function LogIn() {
