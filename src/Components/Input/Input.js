@@ -1,4 +1,5 @@
 import styles from "./Input.module.css";
+
 export default function Input({ onChange, type, value, style }) {
   return (
     <input

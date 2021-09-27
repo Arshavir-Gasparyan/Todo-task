@@ -27,12 +27,15 @@ export default function LogIn() {
       password: "password2",
     },
   ];
+
   const handleUsername = (event) => {
     setLoginInfo(event.target.value);
   };
+
   const handlePassword = (event) => {
     setPasswordInfo(event.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -45,7 +48,6 @@ export default function LogIn() {
         isValidPasswordInfo: true,
       });
       setStorage("user", currentUser);
-      // localStorage.setItem("user", JSON.stringify(currentUser));
       history.push("/todo");
     } else {
       const isValidUserInfo = userInfo.find(
@@ -66,6 +68,7 @@ export default function LogIn() {
         });
     }
   };
+
   return (
     <div className={styles.logIn}>
       <h1>Log In</h1>
@@ -78,13 +81,12 @@ export default function LogIn() {
           </p>
         )}
         <label className={styles.label}>Password</label>
-        <Input onChange={handlePassword} value={passwordInfo} />
+        <Input type="password" onChange={handlePassword} value={passwordInfo} />
         {isValid.isValidPasswordInfo ? null : (
           <p style={{ color: "crimson", textAlign: "left" }}>
             Please enter valid password
           </p>
         )}
-
         <Button text="Login" />
       </form>
     </div>
