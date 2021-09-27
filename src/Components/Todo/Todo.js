@@ -49,7 +49,7 @@ export default function Todo() {
   const doneCount = tasks.filter((task) => task.isComplete).length;
   return (
     <div className={styles.todo}>
-      <h2>THINGS TO DO</h2>
+      <h2>{currUser} THINGS TO DO</h2>
       <hr />
       <div>
         {tasks.map((task) => (
@@ -63,6 +63,7 @@ export default function Todo() {
           </div>
         ))}
       </div>
+      <hr />
       <div>
         <h2>Done {doneCount}</h2>
         <Input onChange={handleTask} value={task} />

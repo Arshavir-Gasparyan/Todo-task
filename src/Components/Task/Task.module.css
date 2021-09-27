@@ -1,16 +1,28 @@
 .task{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .label{
-    margin-left: 10px;
     cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
 }
 
+.input[type="checkbox"] {
+    zoom:2;
+}
 .completed{
-    margin-left: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 24px;
     cursor: pointer;
     text-decoration: line-through;
+}
 
+.task button{
+    background-color: grey;
 }
